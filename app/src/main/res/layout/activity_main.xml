@@ -11,17 +11,23 @@
         android:id="@+id/venner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="visVenner"/>
+        android:onClick="visVenner"
+        android:text="Legg til venner"
+        />
 
     <Button
         android:id="@+id/restaurant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="visRestaurant"/>
+        android:onClick="visRestaurant"
+        android:text="Legg til restaurant"
+        />
 
     <Button
         android:id="@+id/bestilling"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="visBestilling"/>
+        android:onClick="visBestilling"
+        android:text="Legg til bestilling"
+        />
 </LinearLayout>
