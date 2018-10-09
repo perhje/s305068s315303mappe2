@@ -13,17 +13,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void showGame(View v){
+    public void visVenner(View v){
         Intent intent=new Intent(this,Venner.class);
         startActivity(intent);
     }
 
-    public void showStatistics(View v){
+    public void visRestaurant(View v){
         Intent intent=new Intent(this,Restaurant.class);
         startActivity(intent);
     }
 
-    public void showPreferences(View v){
+    public void visBestilling(View v){
         Intent intent=new Intent(this,Bestilling.class);
         startActivity(intent);
     }
