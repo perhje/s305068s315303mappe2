@@ -50,8 +50,8 @@ public class BestillingActivity extends Activity {
     }
 
     public void slett(View v) {
-        Long bestillings_id = (Long.parseLong(bestillings_id.getText().toString()));
-        db.slettBestilling(bestillings_id);
+        Long best_id = (Long.parseLong(bestillings_id.getText().toString()));
+        db.slettBestilling(best_id);
     }
 
 
