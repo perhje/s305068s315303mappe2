@@ -3,7 +3,7 @@ package com.example.phj_1.s305068s315303mappe2;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class Venner extends Activity {
+public class Venner{
 
     String Navn;
     String Telefon;
@@ -12,13 +12,13 @@ public class Venner extends Activity {
     public Venner(){
 
     }
-    public Venner(String navn, String telefon, String type){
+    public Venner(String navn, String telefon){
         this.Navn=navn;
         this.Telefon = telefon;
 
     }
 
-    public Venner(long _ID, String navn, String telefon, String type) {
+    public Venner(long _ID, String navn, String telefon) {
         this._ID=_ID;
         this.Navn=navn;
         this.Telefon = telefon;
