@@ -15,7 +15,7 @@ public class MainActivity extends Activity {
     }
 
     public void visVenner(View v){
-        Intent intent=new Intent(this,Venner.class);
+        Intent intent=new Intent(this,VennerActivity.class);
         startActivity(intent);
     }
 
