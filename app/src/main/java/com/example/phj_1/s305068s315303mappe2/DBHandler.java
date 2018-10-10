@@ -28,9 +28,10 @@ public class DBHandler extends SQLiteOpenHelper{
     static String BESTILLING_ID = "_ID";
     static String BESTILLING_TIDSPUNKT = "Tidspunkt";
     static String BESTILLING_VENNER = "Venner";
+    static String BESTILLING_RESTAURANT = "Restaurant";
 
     static String DATABASE_NAVN = "Restaurantdatabase";
-    static int DATABASE_VERSJON = 21;
+    static int DATABASE_VERSJON = 22;
 
     public DBHandler(Context context){
         super(context, DATABASE_NAVN, null, DATABASE_VERSJON);
@@ -38,18 +39,18 @@ public class DBHandler extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String LAG_VENNER_TABELL = "CREATE TABLE " + TABLE_VENNER + "(" + VENNER_ID + " INTEGER PRIMARY KEY,"
+        String LAG_VENNER_TABELL = "CREATE TABLE IF NOT EXISTS " + TABLE_VENNER + "(" + VENNER_ID + " INTEGER PRIMARY KEY,"
                 + NAVN_VENNER + " TEXT," + TELEFON_VENNER + " TEXT" + ")";
         Log.d("SQL", LAG_VENNER_TABELL);
-        String LAG_RESTAURANT_TABELL = "CREATE TABLE " + TABLE_RESTAURANT + "(" + RESTAURANT_ID + " INTEGER PRIMARY KEY,"
+        db.execSQL(LAG_VENNER_TABELL);
+        String LAG_RESTAURANT_TABELL = "CREATE TABLE IF NOT EXISTS " + TABLE_RESTAURANT + "(" + RESTAURANT_ID + " INTEGER PRIMARY KEY,"
                 + NAVN_RESTAURANT + " TEXT," + ADRESSE_RESTAURANT + " TEXT," + TELEFON_RESTAURANT + " TEXT,"
                 + TYPE_RESTAURANT + " TEXT" + ")";
         Log.d("SQL", LAG_RESTAURANT_TABELL);
-        String LAG_BESTILLING_TABELL = "CREATE TABLE " + TABLE_VENNER + "(" + BESTILLING_ID + " INTEGER PRIMARY KEY,"
-                + BESTILLING_VENNER + " TEXT," + BESTILLING_TIDSPUNKT + " TEXT" + ")";
+        db.execSQL( LAG_RESTAURANT_TABELL);
+        String LAG_BESTILLING_TABELL = "CREATE TABLE IF NOT EXISTS " + TABLE_BESTILLING + "(" + BESTILLING_ID + " INTEGER PRIMARY KEY,"
+                + BESTILLING_VENNER + " TEXT," + BESTILLING_TIDSPUNKT + " TEXT," + BESTILLING_RESTAURANT + " TEXT" + ")";
         Log.d("SQL", LAG_BESTILLING_TABELL);
-        db.execSQL(LAG_VENNER_TABELL);
-        db.execSQL(LAG_RESTAURANT_TABELL);
         db.execSQL(LAG_BESTILLING_TABELL);
     }
 
@@ -143,7 +144,8 @@ public class DBHandler extends SQLiteOpenHelper{
                 Bestilling bestilling = new Bestilling();
                 bestilling.set_ID(cursor.getLong(0));
                 bestilling.setTid(cursor.getString(1));
-                bestilling.setDeltakere(cursor.getString(2));
+                bestilling.setRestaurant(cursor.getString(2));
+                bestilling.setDeltakere(cursor.getString(3));
                 bestillingListe.add(bestilling);
             }while (cursor.moveToNext());
             cursor.close();
