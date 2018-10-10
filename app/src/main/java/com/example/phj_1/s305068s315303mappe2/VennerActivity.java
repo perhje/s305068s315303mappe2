@@ -28,11 +28,11 @@ public class VennerActivity extends Activity{
     public void leggtil(View v) {
         Venner venner= new Venner(navni.getText().toString(), telefoni.getText().toString());
         db.leggTilVenner(venner);
-        Log.d("Legg inn: ", "legger til kontakter");
+        Log.d("Legg inn: ", "legger til venner");
 
         visvenner.setText("teekst");
     }
-    public void finnAlleRestauranter(View v) {
+    public void finnAlleVenner(View v) {
         String tekst = "";
         List<Venner> vennene = db.finnAlleVenner();
         for (Venner venner: vennene) {

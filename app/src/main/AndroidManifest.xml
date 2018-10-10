@@ -16,15 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BestillingActivity">
+        <activity android:name=".BestillingActivity"
             android:parentActivityName=".MainActivity">
 
         </activity>
-        <activity android:name=".RestaurantActivity">
+        <activity android:name=".RestaurantActivity"
             android:parentActivityName=".MainActivity">
 
         </activity>
-        <activity android:name=".VennerActivity">
+        <activity android:name=".VennerActivity"
             android:parentActivityName=".MainActivity">
 
         </activity>
