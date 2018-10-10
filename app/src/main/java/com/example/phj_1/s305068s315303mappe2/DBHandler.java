@@ -84,14 +84,14 @@ public class DBHandler extends SQLiteOpenHelper{
         db.close();
     }
 
-    public void leggTilBestilling(Bestilling bestilling){
+   /* public void leggTilBestilling(Bestilling bestilling){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(BESTILLING_TIDSPUNKT, bestilling.getTidspunkt());
         values.put(BESTILLING_VENNER, bestilling.getVenner());
         db.insert(TABLE_BESTILLING, null,values);
         db.close();
-    }
+    }*/
 
     public List<Venner> finnAlleVenner(){
         List<Venner> vennerListe = new ArrayList<Venner>();
@@ -133,7 +133,7 @@ public class DBHandler extends SQLiteOpenHelper{
         return  restaurantListe;
     }
 
-    public List<Bestilling> finnAlleBestilling(){
+  /*  public List<Bestilling> finnAlleBestilling(){
         List<Bestilling> bestillingListe = new ArrayList<Bestilling>();
         String selectQuery = "SELECT * FROM " + TABLE_BESTILLING;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -150,7 +150,7 @@ public class DBHandler extends SQLiteOpenHelper{
             db.close();
         }
         return bestillingListe;
-    }
+    }*/
 
     public void slettVenner(Long inn_id){
         SQLiteDatabase db = this.getWritableDatabase();

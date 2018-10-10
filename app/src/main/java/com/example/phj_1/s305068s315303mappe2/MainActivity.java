@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
     }
 
     public void visRestaurant(View v){
-        Intent intent=new Intent(this,Restaurant.class);
+        Intent intent=new Intent(this,RestaurantActivity.class);
         startActivity(intent);
     }
 
