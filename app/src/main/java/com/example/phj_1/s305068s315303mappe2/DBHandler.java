@@ -164,6 +164,12 @@ public class DBHandler extends SQLiteOpenHelper{
         db.close();
     }
 
+    public void slettBestilling(Long inn_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_BESTILLING, BESTILLING_ID + " =? ", new String[]{Long.toString(inn_id)});
+        db.close();
+    }
+
     public int endreVenner(Venner venner){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -184,6 +190,17 @@ public class DBHandler extends SQLiteOpenHelper{
         values.put(TYPE_RESTAURANT,restaurant.getNavn());
         int endret = db.update(TABLE_RESTAURANT, values, RESTAURANT_ID + "= ?",
                 new String[]{String.valueOf(restaurant.get_ID())});
+        db.close();
+        return endret;
+    }
+
+    public int endreBestilling(Bestilling bestilling){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(BESTILLING_TIDSPUNKT,bestilling.getTid());
+        values.put(BESTILLING_VENNER,bestilling.getDeltakere());
+        int endret = db.update(TABLE_BESTILLING, values, BESTILLING_ID + "= ?",
+                new String[]{String.valueOf(bestilling.get_ID())});
         db.close();
         return endret;
     }
