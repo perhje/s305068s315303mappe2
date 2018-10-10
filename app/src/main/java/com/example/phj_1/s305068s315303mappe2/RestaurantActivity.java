@@ -60,7 +60,7 @@ public class RestaurantActivity extends Activity {
         restaurant.setTelefon(telefoni.getText().toString());
         restaurant.setType(typei.getText().toString());
         restaurant.set_ID(Long.parseLong(idi.getText().toString()));
-        db.oppdaterRestaurant(restaurant);
+        db.endreRestaurant(restaurant);
 
     }
 }

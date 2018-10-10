@@ -8,8 +8,7 @@ public class Restaurant{
     String Type;
     long _ID;
 
-    public Restaurant(long restaurant_id){
-        this._ID= restaurant_id;
+    public Restaurant(){
 
     }
     public Restaurant(String navn, String telefon, String type, String adresse){
