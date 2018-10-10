@@ -11,14 +11,14 @@ public class Restaurant{
     public Restaurant(){
 
     }
-    public Restaurant(String navn, String telefon, String type, String adresse){
+    public Restaurant(String navn, String adresse, String telefon, String type){
         this.Navn=navn;
         this.Adresse=adresse;
         this.Telefon = telefon;
         this.Type=type;
     }
 
-    public Restaurant(long _ID, String navn, String telefon, String type, String adresse) {
+    public Restaurant(long _ID, String navn,String adresse, String telefon, String type) {
         this._ID=_ID;
         this.Navn=navn;
         this.Adresse=adresse;

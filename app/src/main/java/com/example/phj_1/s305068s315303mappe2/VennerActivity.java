@@ -23,6 +23,7 @@ public class VennerActivity extends Activity{
         telefoni=(EditText) findViewById(R.id.telefon);
         visvenner=(TextView) findViewById(R.id.visvenn);
         idi= (EditText) findViewById(R.id.venn_id);
+        db = new DBHandler(this);
     }
 
     public void leggtil(View v) {

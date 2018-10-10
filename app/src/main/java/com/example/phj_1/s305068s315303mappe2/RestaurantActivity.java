@@ -28,6 +28,7 @@ public class RestaurantActivity extends Activity {
         typei=(EditText) findViewById(R.id.type);
         visrestaurant=(TextView) findViewById(R.id.visrestaurant);
         idi= (EditText) findViewById(R.id.restaurant_id);
+        db= new DBHandler(this);
     }
 
     public void leggtil(View v) {
