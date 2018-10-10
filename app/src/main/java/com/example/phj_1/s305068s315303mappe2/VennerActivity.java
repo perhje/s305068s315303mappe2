@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class VennterActivity extends Activity{
+public class VennerActivity extends Activity{
     EditText navni;
     EditText adressei;
     EditText telefoni;
