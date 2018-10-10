@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
     }
 
     public void visBestilling(View v){
-        Intent intent=new Intent(this,Bestilling.class);
+        Intent intent=new Intent(this,BestillingActivity.class);
         startActivity(intent);
     }
 

@@ -22,43 +22,45 @@ public class BestillingActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bestillingactivity);
         tid=(EditText) findViewById(R.id.tid);
-        restaurantnavn=(EditText) findViewById(R.id.restaurantnavn);
-        deltager=(TextView) findViewById(R.id.deltager);
-        bestillings_id= (EditText) findViewById(R.id.bestillings_id);
+        restaurantnavn=(EditText) findViewById(R.id.restaurant);
+        deltager=(EditText) findViewById(R.id.deltakere);
+        bestillings_id= (EditText) findViewById(R.id.bestilling_id);
+        visbestilling=(TextView) findViewById(R.id.visbestilling);
+
         db = new DBHandler(this);
     }
 
 
 
     public void leggtil(View v) {
-        Venner venner= new Venner(navni.getText().toString(), telefoni.getText().toString());
-        db.leggTilVenner(venner);
-        Log.d("Legg inn: ", "legger til venner");
+        Bestilling bestilling= new Bestilling(tid.getText().toString(), restaurantnavn.getText().toString(), deltager.getText().toString());
+        db.leggTilBestilling(bestilling);
+        Log.d("Legg inn: ", "legger til bestilling");
 
-        visvenner.setText("teekst");
+        visbestilling.setText("teekst");
     }
-    public void finnAlleVenner(View v) {
+    public void finnAlleBestilling(View v) {
         String tekst = "";
-        List<Venner> vennene = db.finnAlleVenner();
-        for (Venner venner: vennene) {
-            tekst = tekst + "Id: " + venner.get_ID() + ",Navn: " +venner.getNavn() + " ,Telefon: " +venner.getTelefon();
+        List<Bestilling> bestillingene = db.finnAlleBestilling();
+        for (Bestilling bestilling: bestillingene) {
+            tekst = tekst + "Id: " + bestilling.get_ID() + ",tid: " +bestilling.getTid() + " ,restaurant: " +bestilling.getRestaurant()+ " ,deltager: " +bestilling.getDeltakere();
             Log.d("Navn: ", tekst);
         }
-        visvenner.setText(tekst);
+        visbestilling.setText(tekst);
     }
 
     public void slett(View v) {
-        Long venner_id= (Long.parseLong(idi.getText().toString()));
-        db.slettVenner(venner_id);
+        Long bestillings_id = (Long.parseLong(bestillings_id.getText().toString()));
+        db.slettBestilling(bestillings_id);
     }
 
 
     public void oppdater(View v) {
-        Venner venner= new Venner();
-        venner.setNavn(navni.getText().toString());
-        venner.setTelefon(telefoni.getText().toString());
-        venner.set_ID(Long.parseLong(idi.getText().toString()));
-        db.endreVenner(venner);
+        Bestilling bestilling= new Bestilling();
+        bestilling.setTid(tid.getText().toString());
+        bestilling.setRestaurant(restaurantnavn.getText().toString());
+        bestilling.set_ID(Long.parseLong(bestillings_id.getText().toString()));
+        db.endreBestilling(bestilling);
 
     }
 }
