@@ -47,7 +47,7 @@
         android:id="@+id/visalle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="finnAlleRestauranter"
+        android:onClick="finnAlleVenner"
         android:text="Vis alle" />
     <Button
         android:id="@+id/oppdater"
