@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="Skriv inn navn:" />
     <EditText
-        android:id="@+id/navn"
+        android:id="@+id/tid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <TextView
@@ -19,7 +19,7 @@
         android:text="Skriv inn telefon:" />
 
     <EditText
-        android:id="@+id/telefon"
+        android:id="@+id/restaurant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -27,10 +27,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Skriv inn bestillings id:" />
+
     <EditText
         android:id="@+id/bestilling_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skriv inn bestillings id:" />
+
+    <EditText
+        android:id="@+id/deltakere"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
 
     <Button
