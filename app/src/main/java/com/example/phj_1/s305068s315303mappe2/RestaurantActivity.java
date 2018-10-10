@@ -42,7 +42,8 @@ public class RestaurantActivity extends Activity {
         String tekst = "";
         List<Restaurant> restauranter = db.finnAlleRestauranter();
         for (Restaurant restaurant: restauranter) {
-            tekst = tekst + "Id: " + restaurant.get_ID() + ",Navn: " +restaurant.getNavn() + " ,Telefon: " +restaurant.getTelefon();
+            tekst = tekst + "Id: " + restaurant.get_ID() + ",Navn: " +restaurant.getNavn() + " ,Adresse: " + restaurant.getAdresse()
+                    + " ,Telefon: " +restaurant.getTelefon() +" ,Type: " + restaurant.getType() + "\n";
             Log.d("Navn: ", tekst);
         }
         visrestaurant.setText(tekst);
