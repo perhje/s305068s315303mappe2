@@ -45,12 +45,12 @@ public class DBHandler extends SQLiteOpenHelper{
                 + NAVN_RESTAURANT + " TEXT," + ADRESSE_RESTAURANT + " TEXT," + TELEFON_RESTAURANT + " TEXT,"
                 + TYPE_RESTAURANT + " TEXT" + ")";
         Log.d("SQL", LAG_RESTAURANT_TABELL);
-        /*String LAG_BESTILLING_TABELL = "CREATE TABLE " + TABLE_VENNER + "(" + BESTILLING_ID + " INTEGER PRIMARY KEY,"
+        String LAG_BESTILLING_TABELL = "CREATE TABLE " + TABLE_VENNER + "(" + BESTILLING_ID + " INTEGER PRIMARY KEY,"
                 + BESTILLING_VENNER + " TEXT," + BESTILLING_TIDSPUNKT + " TEXT" + ")";
-        Log.d("SQL", LAG_BESTILLING_TABELL);*/
+        Log.d("SQL", LAG_BESTILLING_TABELL);
         db.execSQL(LAG_VENNER_TABELL);
         db.execSQL(LAG_RESTAURANT_TABELL);
-        //db.execSQL(LAG_BESTILLING_TABELL);
+        db.execSQL(LAG_BESTILLING_TABELL);
     }
 
     @Override
@@ -59,8 +59,8 @@ public class DBHandler extends SQLiteOpenHelper{
         Log.d("UPDATE", "i venner");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RESTAURANT);
         Log.d("UPDATE", "i restaurant");
-        /*db.execSQL("DROP TABLE IF EXISTS " + TABLE_BESTILLING);
-        Log.d("UPDATE", "i bestilling");*/
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BESTILLING);
+        Log.d("UPDATE", "i bestilling");
         onCreate(db);
     }
 
@@ -84,14 +84,14 @@ public class DBHandler extends SQLiteOpenHelper{
         db.close();
     }
 
-   /* public void leggTilBestilling(Bestilling bestilling){
+    public void leggTilBestilling(Bestilling bestilling){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(BESTILLING_TIDSPUNKT, bestilling.getTidspunkt());
-        values.put(BESTILLING_VENNER, bestilling.getVenner());
+        values.put(BESTILLING_TIDSPUNKT, bestilling.getTid());
+        values.put(BESTILLING_VENNER, bestilling.getDeltakere());
         db.insert(TABLE_BESTILLING, null,values);
         db.close();
-    }*/
+    }
 
     public List<Venner> finnAlleVenner(){
         List<Venner> vennerListe = new ArrayList<Venner>();
@@ -133,7 +133,7 @@ public class DBHandler extends SQLiteOpenHelper{
         return  restaurantListe;
     }
 
-  /*  public List<Bestilling> finnAlleBestilling(){
+    public List<Bestilling> finnAlleBestilling(){
         List<Bestilling> bestillingListe = new ArrayList<Bestilling>();
         String selectQuery = "SELECT * FROM " + TABLE_BESTILLING;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -142,15 +142,15 @@ public class DBHandler extends SQLiteOpenHelper{
             do {
                 Bestilling bestilling = new Bestilling();
                 bestilling.set_ID(cursor.getLong(0));
-                bestilling.setTidspunkt(cursor.getString(1));
-                bestilling.setVenner(cursor.getString(2));
+                bestilling.setTid(cursor.getString(1));
+                bestilling.setDeltakere(cursor.getString(2));
                 bestillingListe.add(bestilling);
             }while (cursor.moveToNext());
             cursor.close();
             db.close();
         }
         return bestillingListe;
-    }*/
+    }
 
     public void slettVenner(Long inn_id){
         SQLiteDatabase db = this.getWritableDatabase();
