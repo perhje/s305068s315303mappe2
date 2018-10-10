@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Skriv inn navn:" />
+        android:text="Skriv inn tid:" />
     <EditText
         android:id="@+id/tid"
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Skriv inn telefon:" />
+        android:text="Skriv inn restaurant:" />
 
     <EditText
         android:id="@+id/restaurant"
@@ -36,7 +36,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Skriv inn bestillings id:" />
+        android:text="Skriv inn deltakere:" />
 
     <EditText
         android:id="@+id/deltakere"
