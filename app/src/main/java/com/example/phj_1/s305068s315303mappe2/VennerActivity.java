@@ -23,5 +23,5 @@ public class VennerActivity extends Activity{
         idi= (EditText) findViewById(R.id.restaurant_id);
     }
 
-    
+
 }

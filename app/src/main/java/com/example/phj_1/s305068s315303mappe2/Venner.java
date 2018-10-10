@@ -5,6 +5,52 @@ import android.os.Bundle;
 
 public class Venner extends Activity {
 
+    String Navn;
+    String Telefon;
+    long _ID;
 
+    public Venner(){
+
+    }
+    public Venner(String navn, String telefon, String type){
+        this.Navn=navn;
+        this.Telefon = telefon;
+
+    }
+
+    public Venner(long _ID, String navn, String telefon, String type) {
+        this._ID=_ID;
+        this.Navn=navn;
+        this.Telefon = telefon;
+
+    }
+
+    public String getNavn() {
+        return Navn;
+    }
+
+    public String getTelefon() {
+        return Telefon;
+    }
+
+    public long get_ID() {
+        return _ID;
+    }
+
+
+
+    public void set_ID(long _ID) {
+        this._ID = _ID;
+    }
+
+    public void setTelefon(String telefon) {
+
+        Telefon = telefon;
+    }
+
+    public void setNavn(String navn) {
+
+        this.Navn = navn;
+    }
 
 }
