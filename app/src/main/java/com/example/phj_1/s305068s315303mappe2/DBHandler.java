@@ -45,12 +45,12 @@ public class DBHandler extends SQLiteOpenHelper{
                 + NAVN_RESTAURANT + " TEXT," + ADRESSE_RESTAURANT + " TEXT," + TELEFON_RESTAURANT + " TEXT,"
                 + TYPE_RESTAURANT + " TEXT" + ")";
         Log.d("SQL", LAG_RESTAURANT_TABELL);
-        String LAG_BESTILLING_TABELL = "CREATE TABLE " + TABLE_VENNER + "(" + BESTILLING_ID + " INTEGER PRIMARY KEY,"
+        /*String LAG_BESTILLING_TABELL = "CREATE TABLE " + TABLE_VENNER + "(" + BESTILLING_ID + " INTEGER PRIMARY KEY,"
                 + BESTILLING_VENNER + " TEXT," + BESTILLING_TIDSPUNKT + " TEXT" + ")";
-        Log.d("SQL", LAG_BESTILLING_TABELL);
+        Log.d("SQL", LAG_BESTILLING_TABELL);*/
         db.execSQL(LAG_VENNER_TABELL);
         db.execSQL(LAG_RESTAURANT_TABELL);
-        db.execSQL(LAG_BESTILLING_TABELL);
+        //db.execSQL(LAG_BESTILLING_TABELL);
     }
 
     @Override
@@ -59,8 +59,8 @@ public class DBHandler extends SQLiteOpenHelper{
         Log.d("UPDATE", "i venner");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RESTAURANT);
         Log.d("UPDATE", "i restaurant");
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BESTILLING);
-        Log.d("UPDATE", "i bestilling");
+        /*db.execSQL("DROP TABLE IF EXISTS " + TABLE_BESTILLING);
+        Log.d("UPDATE", "i bestilling");*/
         onCreate(db);
     }
 
