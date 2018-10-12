@@ -31,7 +31,7 @@ public class DBHandler extends SQLiteOpenHelper{
     static String BESTILLING_RESTAURANT = "Restaurant";
 
     static String DATABASE_NAVN = "Restaurantdatabase";
-    static int DATABASE_VERSJON = 22;
+    static int DATABASE_VERSJON = 23;
 
     public DBHandler(Context context){
         super(context, DATABASE_NAVN, null, DATABASE_VERSJON);
