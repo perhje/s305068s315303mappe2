@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="smsonoff"
+        android:title="@string/smscheck"
+        android:summary="@string/smschecksum"
+        android:defaultValue="true"/>
+    <ListPreference
+        android:key="tidspunkt"
+        android:title=""
+        android:summary=""
+        android:defaultValue="8"
+        android:entries="@array/tidspunkts"
+        android:entryValues="@array/tidspunkt"/>
+    <EditTextPreference
+        android:key="smsmelding"
+        android:title=""
+        android:summary=""
+        android:defaultValue="@string/standardsms"/>
+</PreferenceScreen>
