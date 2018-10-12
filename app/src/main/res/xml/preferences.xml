@@ -7,14 +7,14 @@
         android:defaultValue="true"/>
     <ListPreference
         android:key="tidspunkt"
-        android:title=""
-        android:summary=""
+        android:title="@string/smstid"
+        android:summary="@string/smstidsum"
         android:defaultValue="8"
         android:entries="@array/tidspunkts"
         android:entryValues="@array/tidspunkt"/>
     <EditTextPreference
         android:key="smsmelding"
-        android:title=""
-        android:summary=""
+        android:title="@string/smsedit"
+        android:summary="@string/smseditsum"
         android:defaultValue="@string/standardsms"/>
 </PreferenceScreen>

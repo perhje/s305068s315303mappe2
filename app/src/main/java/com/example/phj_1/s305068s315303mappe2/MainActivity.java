@@ -29,4 +29,9 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void visPreferanser(View v){
+        Intent intent=new Intent(this,Preferanser.class);
+        startActivity(intent);
+    }
+
 }
