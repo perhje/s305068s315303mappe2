@@ -33,6 +33,11 @@
             android:parentActivityName=".MainActivity">
 
         </activity>
+        <receiver android:name="com.example.phj_1.s305068s315303mappe2.SMSBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.example.serviceeksempel.mittbroadcast" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

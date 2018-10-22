@@ -37,7 +37,7 @@ public class BestillingActivity extends Activity {
         db.leggTilBestilling(bestilling);
         Log.d("Legg inn: ", "legger til bestilling");
 
-        visbestilling.setText("teekst");
+        visbestilling.setText("tekst");
     }
     public void finnAlleBestilling(View v) {
         String tekst = "";

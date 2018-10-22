@@ -3,6 +3,8 @@ package com.example.phj_1.s305068s315303mappe2;
 import android.app.Activity;
 import android.os.Bundle;
 
+import java.util.Date;
+
 public class Bestilling{
     String Tid;
     String Restaurant;
