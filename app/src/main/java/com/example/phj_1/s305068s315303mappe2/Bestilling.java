@@ -6,7 +6,7 @@ import android.os.Bundle;
 import java.util.Date;
 
 public class Bestilling{
-    Date Tid;
+    String Tid;
     String Restaurant;
     String Deltakere;
     long _ID;
@@ -14,20 +14,20 @@ public class Bestilling{
     public Bestilling(){
 
     }
-    public Bestilling(Date tid, String restaurant, String deltakere){
+    public Bestilling(String tid, String restaurant, String deltakere){
         this.Tid = tid;
         this.Restaurant = restaurant;
         this.Deltakere = deltakere;
     }
 
-    public Bestilling(Date tid, String restaurant, String deltakere, long _ID){
+    public Bestilling(String tid, String restaurant, String deltakere, long _ID){
         this.Tid = tid;
         this.Restaurant = restaurant;
         this.Deltakere = deltakere;
         this._ID = _ID;
     }
 
-    public Date getTid() {
+    public String getTid() {
         return Tid;
     }
 
@@ -49,7 +49,7 @@ public class Bestilling{
         this._ID = _ID;
     }
 
-    public void setTid(Date tid) {
+    public void setTid(String tid) {
 
         Tid = tid;
     }
