@@ -34,11 +34,12 @@ public class SmsService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Toast.makeText(getApplicationContext(), "I MinService", Toast.LENGTH_SHORT).show();
+        finnTlf();
         return super.onStartCommand(intent, flags, startId);
     }
     DBHandler db;
-    public int finnTlf() {
-        int phoneNo=0;
+    public String finnTlf() {
+        String phoneNo ="";
 
         List<Bestilling> bestillingene = db.finnAlleBestilling();
         String Deltager;
@@ -65,8 +66,11 @@ public class SmsService extends Service {
 
                     for(String deltager: deltakerList){
                         List<Venner> vennene = db.finnAlleVenner();
-                         
-
+                        for( Venner venner: vennene) {
+                            if (deltager==venner.getNavn()) {
+                                phoneNo=venner.getTelefon();
+                            }
+                        }
 
                     }
 
