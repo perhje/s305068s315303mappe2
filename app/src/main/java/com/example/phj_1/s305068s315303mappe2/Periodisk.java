@@ -39,16 +39,16 @@ public class Periodisk extends Service {
         time = prefcount.getString("tidspunkt", "8");
         long diffen=0;
         try {
-            Date date3=new SimpleDateFormat("HH:mm").parse(time);
-            long time1 = date3.getTime();
+            Date date1=new SimpleDateFormat("HH:mm").parse(time);
+            long time1 = date1.getTime();
             System.out.println(time1);
 
             Calendar calendar= Calendar.getInstance();
             Date now = calendar.getTime();
             DateFormat tidspunkt= new SimpleDateFormat("HH:mm");
             String formatTidspunkt = tidspunkt.format(now);
-            Date date4=new SimpleDateFormat("HH:mm").parse(formatTidspunkt);
-            long time2= date4.getTime();
+            Date date2=new SimpleDateFormat("HH:mm").parse(formatTidspunkt);
+            long time2= date2.getTime();
             System.out.println(time2);
 
             if(time1 > time2){
@@ -56,7 +56,7 @@ public class Periodisk extends Service {
 
 
             }
-            else if(time1 < time2){
+            else if(time1 <= time2){
                 time1+=(1000*60*60*24);
                  diffen= time1-time2;
 
