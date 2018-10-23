@@ -3,42 +3,38 @@ package com.example.phj_1.s305068s315303mappe2;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Service;
-import android.content.ContentProvider;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.telephony.SmsManager;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class SmsService extends Service {
-    @Override
-    public IBinder onBind(Intent arg0) {
-        return null;
-    }
+public class SmsService extends Activity {
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        SharedPreferences prefsms = PreferenceManager.getDefaultSharedPreferences(this);
+        sms = prefsms.getString("smsmelding", "@string/standardsms");
+
         Toast.makeText(getApplicationContext(), "I MinService", Toast.LENGTH_SHORT).show();
         finnTlf();
-        return super.onStartCommand(intent, flags, startId);
     }
+
     DBHandler db;
-    public String finnTlf() {
+
+    public void finnTlf() {
         String phoneNo ="";
 
         List<Bestilling> bestillingene = db.finnAlleBestilling();
@@ -69,9 +65,10 @@ public class SmsService extends Service {
                         for( Venner venner: vennene) {
                             if (deltager==venner.getNavn()) {
                                 phoneNo=venner.getTelefon();
+                                SmsSender.sendSMS(phoneNo);
+                                sendSMS(phoneNo);
                             }
                         }
-
                     }
 
                 }
@@ -81,10 +78,23 @@ public class SmsService extends Service {
             }
         }
 
-
-
-
-        return phoneNo;
     }
+    String sms;
 
+    public void sendSMS(String phoneNo) {
+        int MY_PERMISSIONS_REQUEST_SEND_SMS = ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.SEND_SMS);
+        int MY_PHONE_STATE_PERMISSION = ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.READ_PHONE_STATE);
+        if(MY_PERMISSIONS_REQUEST_SEND_SMS == PackageManager.PERMISSION_GRANTED&& MY_PHONE_STATE_PERMISSION ==
+                PackageManager.PERMISSION_GRANTED) {
+            SmsManager smsMan= SmsManager.getDefault();
+            smsMan.sendTextMessage(phoneNo, null, sms, null, null);
+            Toast.makeText(this, "Har sendt sms", Toast.LENGTH_SHORT).show();
+        }else{
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.SEND_SMS,Manifest.permission.READ_PHONE_STATE
+            }, 0);
+        }
+    }
 }
