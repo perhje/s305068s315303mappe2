@@ -32,7 +32,7 @@ public class DBHandler extends SQLiteOpenHelper{
     static String BESTILLING_RESTAURANT = "Restaurant";
 
     static String DATABASE_NAVN = "Restaurantdatabase";
-    static int DATABASE_VERSJON = 23;
+    static int DATABASE_VERSJON = 25;
 
     public DBHandler(Context context){
         super(context, DATABASE_NAVN, null, DATABASE_VERSJON);
@@ -50,7 +50,7 @@ public class DBHandler extends SQLiteOpenHelper{
         Log.d("SQL", LAG_RESTAURANT_TABELL);
         db.execSQL( LAG_RESTAURANT_TABELL);
         String LAG_BESTILLING_TABELL = "CREATE TABLE IF NOT EXISTS " + TABLE_BESTILLING + "(" + BESTILLING_ID + " INTEGER PRIMARY KEY,"
-                + BESTILLING_VENNER + " TEXT," + BESTILLING_TIDSPUNKT + " TEXT," + BESTILLING_RESTAURANT + " TEXT" + ")";
+                + BESTILLING_TIDSPUNKT + " TEXT," + BESTILLING_RESTAURANT + " TEXT," + BESTILLING_VENNER + " TEXT" + ")";
         Log.d("SQL", LAG_BESTILLING_TABELL);
         db.execSQL(LAG_BESTILLING_TABELL);
     }
@@ -90,6 +90,7 @@ public class DBHandler extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(BESTILLING_TIDSPUNKT, bestilling.getTid());
+        values.put(BESTILLING_RESTAURANT,bestilling.getRestaurant());
         values.put(BESTILLING_VENNER, bestilling.getDeltakere());
         db.insert(TABLE_BESTILLING, null,values);
         db.close();
@@ -202,6 +203,7 @@ public class DBHandler extends SQLiteOpenHelper{
         ContentValues values = new ContentValues();
         values.put(BESTILLING_TIDSPUNKT,bestilling.getTid());
         values.put(BESTILLING_VENNER,bestilling.getDeltakere());
+        values.put(BESTILLING_RESTAURANT,bestilling.getRestaurant());
         int endret = db.update(TABLE_BESTILLING, values, BESTILLING_ID + "= ?",
                 new String[]{String.valueOf(bestilling.get_ID())});
         db.close();
