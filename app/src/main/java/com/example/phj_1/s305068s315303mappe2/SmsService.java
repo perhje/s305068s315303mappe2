@@ -30,7 +30,7 @@ public class SmsService extends Service {
         SharedPreferences prefsms = PreferenceManager.getDefaultSharedPreferences(this);
         sms = prefsms.getString("smsmelding", "@string/standardsms");
 
-        Toast.makeText(getApplicationContext(), "I MinService", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Sjekker for ny bestilling", Toast.LENGTH_SHORT).show();
         finnTlf();
         return super.onStartCommand(intent,flags,startId);
     }
@@ -39,8 +39,10 @@ public class SmsService extends Service {
 
     public void finnTlf() {
         String phoneNo ="";
+        List<Bestilling>bestillingene = null;
+        try {
+            bestillingene = db.finnAlleBestilling();
 
-        List<Bestilling> bestillingene = db.finnAlleBestilling();
         String Deltager;
         String Tid;
         String restaurantNavn;
@@ -69,6 +71,7 @@ public class SmsService extends Service {
                             if (deltager==venner.getNavn()) {
                                 phoneNo=venner.getTelefon();
                                 //SmsSender.sendSMS(phoneNo);
+                                Toast.makeText(getApplicationContext(), "hey..husk bestillingen din!", Toast.LENGTH_SHORT).show();
                                 sendSMS(phoneNo);
                             }
                         }
@@ -80,7 +83,10 @@ public class SmsService extends Service {
                 e.printStackTrace();
             }
         }
+        }
+        catch (NullPointerException e){
 
+        }
     }
     String sms;
 
