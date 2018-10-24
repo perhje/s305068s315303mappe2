@@ -31,11 +31,11 @@ public class SmsService extends Service {
         sms = prefsms.getString("smsmelding", "@string/standardsms");
 
         Toast.makeText(getApplicationContext(), "Sjekker for ny bestilling", Toast.LENGTH_SHORT).show();
-        finnTlf();
+       finnTlf();
         return super.onStartCommand(intent,flags,startId);
     }
 
-    DBHandler db;
+    DBHandler db= new DBHandler(this);
 
     public void finnTlf() {
         String phoneNo ="";
@@ -43,7 +43,7 @@ public class SmsService extends Service {
         Toast.makeText(getApplicationContext(), "leter etter Tlf", Toast.LENGTH_SHORT).show();
         try {
             bestillingene = db.finnAlleBestilling();
-
+            Toast.makeText(getApplicationContext(), "fant en bestilling", Toast.LENGTH_SHORT).show();
         String Deltager;
         String Tid;
         String restaurantNavn;
@@ -51,6 +51,8 @@ public class SmsService extends Service {
 
         for (Bestilling bestilling: bestillingene) {
             Tid =bestilling.getTid();
+            Toast.makeText(getApplicationContext(), Tid, Toast.LENGTH_SHORT).show();
+
             try {
                 Date date1=new SimpleDateFormat("yyyy/MM/dd HH:mm").parse(Tid);
                 Calendar calendar= Calendar.getInstance();
@@ -58,33 +60,41 @@ public class SmsService extends Service {
                 DateFormat dtf= new SimpleDateFormat("yyyy/MM/dd HH:mm");
                 String ny= dtf.format(today);
                 Date date2=new SimpleDateFormat("yyyy/MM/dd HH:mm").parse(ny);
+                Toast.makeText(getApplicationContext(), "parset ferdig", Toast.LENGTH_SHORT).show();
+
                 long differenceInMillis = date1.getTime() - date2.getTime();
-                long antallTimer=differenceInMillis/1000/60/60;
+                long antTimer=differenceInMillis/1000/60/60;
+
+               int antallTimer= (int)antTimer;
+               Toast.makeText(getApplicationContext(),"det er greit", Toast.LENGTH_SHORT).show();
 
                 if(antallTimer<36 && antallTimer>12){
                     restaurantNavn= bestilling.getRestaurant();
                     Deltager = bestilling.getDeltakere();
                     String[] deltakerList = Deltager.split("-");
-
+                    String test= deltakerList[0];
+                    Toast.makeText(getApplicationContext(),test, Toast.LENGTH_SHORT).show();
+                    List<Venner> vennene = db.finnAlleVenner();
                     for(String deltager: deltakerList){
-                        List<Venner> vennene = db.finnAlleVenner();
+                        //Toast.makeText(getApplicationContext(),deltager, Toast.LENGTH_SHORT).show();
                         for( Venner venner: vennene) {
-                            if (deltager==venner.getNavn()) {
+                            String venn= venner.getNavn();
+                            Toast.makeText(getApplicationContext(),deltager+"dette er en venn "+venn, Toast.LENGTH_SHORT).show();
+                            if (venn.equals(deltager)){
                                 phoneNo=venner.getTelefon();
-
-                                //SmsSender.sendSMS(phoneNo);
                                 Toast.makeText(getApplicationContext(),phoneNo, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"fant match", Toast.LENGTH_SHORT).show();
                                 sendSMS(phoneNo);
                             }
                         }
                     }
 
-                }
-            }
+                }  }
             catch (ParseException e) {
                 Toast.makeText(getApplicationContext(), "Konverteringsfeil", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
+
         }
         }
         catch (NullPointerException e){
