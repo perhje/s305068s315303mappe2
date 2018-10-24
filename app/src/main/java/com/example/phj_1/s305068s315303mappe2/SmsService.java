@@ -20,16 +20,19 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class SmsService extends Activity {
+public class SmsService extends Service {
+    @Override
+    public IBinder onBind(Intent arg0){
+        return null;
+    }
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public int onStartCommand(Intent intent, int flags, int startId) {
         SharedPreferences prefsms = PreferenceManager.getDefaultSharedPreferences(this);
         sms = prefsms.getString("smsmelding", "@string/standardsms");
 
         Toast.makeText(getApplicationContext(), "I MinService", Toast.LENGTH_SHORT).show();
         finnTlf();
+        return super.onStartCommand(intent,flags,startId);
     }
 
     DBHandler db;
