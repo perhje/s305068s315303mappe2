@@ -27,13 +27,18 @@ public class MainActivity extends Activity {
                     Manifest.permission.SEND_SMS,Manifest.permission.READ_PHONE_STATE
             }, 0);
         }
-        SharedPreferences prefsms = PreferenceManager.getDefaultSharedPreferences(this);
-        sms = prefsms.getString("smsmelding", "@string/standardsms");
+       //String onoff;
         SharedPreferences prefavpa = PreferenceManager.getDefaultSharedPreferences(this);
-        prefavpa = prefsms.getString("smsonoff", "@string/standardsms");
-        Intent intent = new Intent();
-        intent.setAction("com.example.serviceeksempel.mittbroadcast");
-        sendBroadcast(intent);
+        boolean onoff = prefavpa.getBoolean("smsonoff",true);
+        if(onoff) {
+            Intent intent = new Intent();
+            intent.setAction("com.example.serviceeksempel.mittbroadcast");
+            sendBroadcast(intent);
+        }
+    }
+    public void onRestart(){
+        super.onRestart();
+        recreate();
     }
 
     public void visVenner(View v){
