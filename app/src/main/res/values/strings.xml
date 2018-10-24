@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">s305068s315303mappe2</string>
-    <string name="standardsms">Det er bestilt bord hos %$1s klokka %$2s</string>
+    <string name="standardsms">Bord er bestilt til </string>
     <string name="smscheck">Sms på/av</string>
     <string name="smschecksum">Skru sms-tjenesten av eller på</string>
     <string name="smstid">Tidspunkt</string>
     <string name="smstidsum">Sett tidpunkt for bestillingen</string>
     <string name="smsedit">Sms-melding</string>
-    <string name="smseditsum">Sett teksten for sms som sendes \nSkriv %$1s for restaurant og %$2s for tidspunkt</string>
+    <string name="smseditsum">Sett teksten for sms som sendes</string>
 </resources>

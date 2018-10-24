@@ -65,7 +65,7 @@ public class SmsService extends Activity {
                         for( Venner venner: vennene) {
                             if (deltager==venner.getNavn()) {
                                 phoneNo=venner.getTelefon();
-                                SmsSender.sendSMS(phoneNo);
+                                //SmsSender.sendSMS(phoneNo);
                                 sendSMS(phoneNo);
                             }
                         }
@@ -82,19 +82,9 @@ public class SmsService extends Activity {
     String sms;
 
     public void sendSMS(String phoneNo) {
-        int MY_PERMISSIONS_REQUEST_SEND_SMS = ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.SEND_SMS);
-        int MY_PHONE_STATE_PERMISSION = ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.READ_PHONE_STATE);
-        if(MY_PERMISSIONS_REQUEST_SEND_SMS == PackageManager.PERMISSION_GRANTED&& MY_PHONE_STATE_PERMISSION ==
-                PackageManager.PERMISSION_GRANTED) {
             SmsManager smsMan= SmsManager.getDefault();
             smsMan.sendTextMessage(phoneNo, null, sms, null, null);
             Toast.makeText(this, "Har sendt sms", Toast.LENGTH_SHORT).show();
-        }else{
-            ActivityCompat.requestPermissions(this, new String[]{
-                    Manifest.permission.SEND_SMS,Manifest.permission.READ_PHONE_STATE
-            }, 0);
-        }
+
     }
 }
