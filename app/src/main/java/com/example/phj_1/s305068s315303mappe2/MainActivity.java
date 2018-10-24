@@ -3,7 +3,9 @@ package com.example.phj_1.s305068s315303mappe2;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +27,10 @@ public class MainActivity extends Activity {
                     Manifest.permission.SEND_SMS,Manifest.permission.READ_PHONE_STATE
             }, 0);
         }
+        SharedPreferences prefsms = PreferenceManager.getDefaultSharedPreferences(this);
+        sms = prefsms.getString("smsmelding", "@string/standardsms");
+        SharedPreferences prefavpa = PreferenceManager.getDefaultSharedPreferences(this);
+        prefavpa = prefsms.getString("smsonoff", "@string/standardsms");
         Intent intent = new Intent();
         intent.setAction("com.example.serviceeksempel.mittbroadcast");
         sendBroadcast(intent);

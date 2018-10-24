@@ -40,6 +40,7 @@ public class SmsService extends Service {
     public void finnTlf() {
         String phoneNo ="";
         List<Bestilling>bestillingene = null;
+        Toast.makeText(getApplicationContext(), "leter etter Tlf", Toast.LENGTH_SHORT).show();
         try {
             bestillingene = db.finnAlleBestilling();
 
@@ -70,8 +71,9 @@ public class SmsService extends Service {
                         for( Venner venner: vennene) {
                             if (deltager==venner.getNavn()) {
                                 phoneNo=venner.getTelefon();
+
                                 //SmsSender.sendSMS(phoneNo);
-                                Toast.makeText(getApplicationContext(), "hey..husk bestillingen din!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),phoneNo, Toast.LENGTH_SHORT).show();
                                 sendSMS(phoneNo);
                             }
                         }
@@ -80,12 +82,13 @@ public class SmsService extends Service {
                 }
             }
             catch (ParseException e) {
+                Toast.makeText(getApplicationContext(), "Konverteringsfeil", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
         }
         }
         catch (NullPointerException e){
-
+            Toast.makeText(getApplicationContext(), "fant ingen bestilling", Toast.LENGTH_SHORT).show();
         }
     }
     String sms;
