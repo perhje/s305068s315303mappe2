@@ -2,6 +2,7 @@ package com.example.phj_1.s305068s315303mappe2;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -10,6 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -39,15 +41,12 @@ public class MainActivity extends Activity {
             pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
             Toast.makeText(this, "Broadcastreceiver av", Toast.LENGTH_SHORT).show();
         }
-        Intent intent = new Intent();
-        intent.setAction("com.example.serviceeksempel.mittbroadcast");
-        sendBroadcast(intent);
+
         if(onoff) {
             Intent intent = new Intent();
             intent.setAction("com.example.serviceeksempel.mittbroadcast");
             sendBroadcast(intent);
         }
-        Toast.makeText(getApplicationContext(), "NÅ starte jeg", Toast.LENGTH_SHORT).show();
     }
     public void onRestart(){
         super.onRestart();

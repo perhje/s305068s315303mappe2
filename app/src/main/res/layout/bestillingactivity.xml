@@ -8,11 +8,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Skriv inn tid:" />
+        android:text="Skriv inn tid:"  />
     <EditText
         android:id="@+id/tid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="YYYY/MM/DD HH:MM" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,7 +32,8 @@
     <EditText
         android:id="@+id/deltakere"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="navn-navn-navn...."/>
 
     <TextView
         android:layout_width="match_parent"
