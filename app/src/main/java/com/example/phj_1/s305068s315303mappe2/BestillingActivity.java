@@ -26,7 +26,6 @@ public class BestillingActivity extends Activity {
         deltager=(EditText) findViewById(R.id.deltakere);
         bestillings_id= (EditText) findViewById(R.id.bestilling_id);
         visbestilling=(TextView) findViewById(R.id.visbestilling);
-
         db = new DBHandler(this);
     }
 
