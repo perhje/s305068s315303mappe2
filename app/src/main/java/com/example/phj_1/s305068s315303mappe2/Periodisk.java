@@ -22,17 +22,22 @@ public class Periodisk extends Service {
     public IBinder onBind(Intent intent){
         return null;
     }
+    boolean onoff;
     String time;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
+        SharedPreferences prefavpa = PreferenceManager.getDefaultSharedPreferences(this);
+        onoff = prefavpa.getBoolean("smsonoff",true);
         SharedPreferences prefcount = PreferenceManager.getDefaultSharedPreferences(this);
         time = prefcount.getString("tidspunkt", "8");
         java.util.Calendar cal = Calendar.getInstance();
         Intent i = new Intent(this, SmsService.class);
         PendingIntent pintent = PendingIntent.getService(this,0,i,0);
-        AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),1000*60,pintent);
-        return super.onStartCommand(intent,flags,startId);
+        if(onoff){
+            AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000 * 60, pintent);
+        }
+        return super.onStartCommand(intent, flags, startId);
     }
     public long setTime(){
         SharedPreferences prefcount = PreferenceManager.getDefaultSharedPreferences(this);
