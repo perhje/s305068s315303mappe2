@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">s305068s315303mappe2</string>
-    <string name="standardsms">Bord er bestilt til </string>
+    <string name="standardsms">Bord er bestilt</string>
     <string name="smscheck">Sms på/av</string>
     <string name="smschecksum">Skru sms-tjenesten av eller på</string>
     <string name="smstid">Tidspunkt</string>

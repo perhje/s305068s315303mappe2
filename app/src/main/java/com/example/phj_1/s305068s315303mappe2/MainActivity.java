@@ -41,13 +41,14 @@ public class MainActivity extends Activity {
             pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
             Toast.makeText(this, "Broadcastreceiver av", Toast.LENGTH_SHORT).show();
         }
-
         if(onoff) {
             Intent intent = new Intent();
             intent.setAction("com.example.serviceeksempel.mittbroadcast");
             sendBroadcast(intent);
         }
+        Toast.makeText(getApplicationContext(), "NÅ starte jeg", Toast.LENGTH_SHORT).show();
     }
+
     public void onRestart(){
         super.onRestart();
         recreate();

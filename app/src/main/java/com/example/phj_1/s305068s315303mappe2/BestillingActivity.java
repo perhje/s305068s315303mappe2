@@ -58,6 +58,7 @@ public class BestillingActivity extends Activity {
         Bestilling bestilling= new Bestilling();
         bestilling.setTid(tid.getText().toString());
         bestilling.setRestaurant(restaurantnavn.getText().toString());
+        bestilling.setDeltakere(deltager.getText().toString());
         bestilling.set_ID(Long.parseLong(bestillings_id.getText().toString()));
         db.endreBestilling(bestilling);
 
