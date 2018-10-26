@@ -1,6 +1,7 @@
 package com.example.phj_1.s305068s315303mappe2;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,16 +32,11 @@ public class VennerActivity extends Activity{
         db.leggTilVenner(venner);
         Log.d("Legg inn: ", "legger til venner");
 
-        visvenner.setText("teekst");
+        visvenner.setText("Lagt til");
     }
     public void finnAlleVenner(View v) {
-        String tekst = "";
-        List<Venner> vennene = db.finnAlleVenner();
-        for (Venner venner: vennene) {
-            tekst = tekst + "Id: " + venner.get_ID() + ",Navn: " +venner.getNavn() + " ,Telefon: " +venner.getTelefon();
-            Log.d("Navn: ", tekst);
-        }
-        visvenner.setText(tekst);
+        Intent intent=new Intent(this,ListviewVennActivity.class);
+        startActivity(intent);
     }
 
     public void slett(View v) {
