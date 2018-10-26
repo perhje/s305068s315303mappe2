@@ -7,4 +7,5 @@
     <string name="smstidsum">Sett tidpunkt for bestillingen</string>
     <string name="smsedit">Sms-melding</string>
     <string name="smseditsum">Sett teksten for sms som sendes</string>
+    <string name="ok">Ok</string>
 </resources>

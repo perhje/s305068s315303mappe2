@@ -2,6 +2,10 @@ package com.example.phj_1.s305068s315303mappe2;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.DialogFragment;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +14,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
 import android.telephony.SmsManager;
 import android.widget.Toast;
 
@@ -20,7 +25,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class SmsService extends Service {
+public class SmsService extends Service{
     @Override
     public IBinder onBind(Intent arg0){
         return null;
