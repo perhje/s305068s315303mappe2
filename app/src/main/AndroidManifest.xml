@@ -3,6 +3,7 @@
     package="com.example.phj_1.s305068s315303mappe2">
     <uses-permission android:name="android.permission.SEND_SMS"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -37,9 +38,14 @@
         <service android:name=".SmsService">
 
         </service>
-        <receiver android:name="com.example.phj_1.s305068s315303mappe2.SMSBroadcastReceiver">
+        <receiver android:name="com.example.phj_1.s305068s315303mappe2.SMSBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.example.serviceeksempel.mittbroadcast" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
     </application>

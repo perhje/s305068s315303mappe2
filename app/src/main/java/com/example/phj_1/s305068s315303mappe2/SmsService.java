@@ -10,6 +10,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -79,8 +80,16 @@ public class SmsService extends Service{
                             }
                         }
                     }
+                    NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                    Notification notification = new NotificationCompat.Builder(this)
+                            .setContentTitle("MinNotifikasjon")
+                            .setContentText("Tekst")
+                            .setSmallIcon(R.mipmap.ic_launcher).build();
+                    notification.flags |= Notification.FLAG_AUTO_CANCEL;
+                    notificationManager.notify(0,notification);
 
-                }  }
+
+                } }
             catch (ParseException e) {
                 Toast.makeText(getApplicationContext(), "Konverteringsfeil, feil input format på dato", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
