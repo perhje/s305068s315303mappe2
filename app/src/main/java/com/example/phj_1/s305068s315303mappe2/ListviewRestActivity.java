@@ -51,7 +51,7 @@ public class ListviewRestActivity extends Activity {
                 List<Restaurant> restauranter = db.finnAlleRestauranter();
                 for (Restaurant restaurant : restauranter) {
                     if(itemValue.equals(restaurant.getNavn())){
-                        tekst3 = "Restaurantnavn: " + restaurant.getNavn() + " ,Adresse: " + restaurant.getAdresse()
+                        tekst3 = restaurant.getNavn() + " ,Adresse: " + restaurant.getAdresse()
                                 + " ,Telefon: " + restaurant.getTelefon() + " ,Type: " + restaurant.getType() + "\n";
                     }
                 }
