@@ -44,7 +44,7 @@ public class ListviewRestActivity extends Activity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
-            int itemPosition     = position;
+
 
             String tekst3="";
             String  itemValue    = (String) listView.getItemAtPosition(position);
