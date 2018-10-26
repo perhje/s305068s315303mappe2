@@ -1,6 +1,7 @@
 package com.example.phj_1.s305068s315303mappe2;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,16 +37,11 @@ public class BestillingActivity extends Activity {
         db.leggTilBestilling(bestilling);
         Log.d("Legg inn: ", "legger til bestilling");
 
-        visbestilling.setText("tekst");
+        visbestilling.setText("Lagt til");
     }
     public void finnAlleBestilling(View v) {
-        String tekst = "";
-        List<Bestilling> bestillingene = db.finnAlleBestilling();
-        for (Bestilling bestilling: bestillingene) {
-            tekst = tekst + "Id: " + bestilling.get_ID() + ",tid: " +bestilling.getTid() + " ,restaurant: " +bestilling.getRestaurant()+ " ,deltager: " +bestilling.getDeltakere();
-            Log.d("Navn: ", tekst);
-        }
-        visbestilling.setText(tekst);
+        Intent intent=new Intent(this,ListviewbestAcitivity.class);
+        startActivity(intent);
     }
 
     public void slett(View v) {

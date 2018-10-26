@@ -25,8 +25,20 @@
             android:parentActivityName=".MainActivity">
 
         </activity>
+        <activity android:name=".ListviewRestActivity"
+            android:parentActivityName=".RestaurantActivity">
+
+        </activity>
+        <activity android:name=".ListviewVennActivity"
+            android:parentActivityName=".VennerActivity">
+
+        </activity>
         <activity android:name=".VennerActivity"
             android:parentActivityName=".MainActivity">
+
+        </activity>
+        <activity android:name=".ListviewbestAcitivity"
+            android:parentActivityName=".BestillingActivity">
 
         </activity>
         <activity android:name=".Preferanser"
