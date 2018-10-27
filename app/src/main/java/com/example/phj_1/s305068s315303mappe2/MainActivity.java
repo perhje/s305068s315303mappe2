@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+    public static String PROVIDER="com.example.contentproviderrestaurant";
+    public static final Uri CONTENT_URI = Uri.parse("content://" + PROVIDER + "/rest");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,6 @@ public class MainActivity extends Activity {
 
     public void onRestart(){
         super.onRestart();
-        recreate();
     }
 
     public void visVenner(View v){

@@ -37,7 +37,7 @@ public class SmsService extends Service{
         sms = prefsms.getString("smsmelding", "@string/standardsms");
 
         Toast.makeText(getApplicationContext(), "Sjekker for ny bestilling", Toast.LENGTH_SHORT).show();
-       finnTlf();
+        finnTlf();
         return super.onStartCommand(intent,flags,startId);
     }
 
@@ -83,12 +83,10 @@ public class SmsService extends Service{
                     NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                     Notification notification = new NotificationCompat.Builder(this)
                             .setContentTitle("MinNotifikasjon")
-                            .setContentText("Tekst")
+                            .setContentText("testtekstnotifikasjon")
                             .setSmallIcon(R.mipmap.ic_launcher).build();
                     notification.flags |= Notification.FLAG_AUTO_CANCEL;
                     notificationManager.notify(0,notification);
-
-
                 } }
             catch (ParseException e) {
                 Toast.makeText(getApplicationContext(), "Konverteringsfeil, feil input format på dato", Toast.LENGTH_SHORT).show();

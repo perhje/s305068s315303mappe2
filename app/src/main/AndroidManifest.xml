@@ -4,6 +4,9 @@
     <uses-permission android:name="android.permission.SEND_SMS"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="com.example.contentproviderrestaurant.permission"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <permission android:name="com.example.contentproviderrestaurant.permission"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -46,7 +49,12 @@
             android:parentActivityName=".MainActivity">
 
         </activity>
-        <service android:name=".Periodisk"></service>
+        <activity android:name=".NotifikasjonAktivitet">
+
+        </activity>
+        <service android:name=".Periodisk">
+
+        </service>
         <service android:name=".SmsService">
 
         </service>
@@ -60,6 +68,14 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
+        <provider
+            android:name="com.example.phj_1.s305068s315303mappe2.RestaurantProvider"
+            android:authorities="com.example.contentproviderrestaurant"
+            android:enabled="true"
+            android:exported="true"
+            android:readPermission="com.example.contentproviderrestaurant.permission">
+
+        </provider>
     </application>
 
 </manifest>
