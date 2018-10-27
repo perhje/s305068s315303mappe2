@@ -17,7 +17,8 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
     public static String PROVIDER="com.example.contentproviderrestaurant";
     public static final Uri CONTENT_URI = Uri.parse("content://" + PROVIDER + "/rest");
-
+    boolean onoff;
+    boolean onoffcheck = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,7 @@ public class MainActivity extends Activity {
         }
        //String onoff;
         SharedPreferences prefavpa = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean onoff = prefavpa.getBoolean("smsonoff",true);
+        onoff = prefavpa.getBoolean("smsonoff",true);
         ComponentName receiver = new ComponentName(this, SMSBroadcastReceiver.class);
         PackageManager pm = this.getPackageManager();
         if(onoff){
@@ -49,11 +50,31 @@ public class MainActivity extends Activity {
             intent.setAction("com.example.serviceeksempel.mittbroadcast");
             sendBroadcast(intent);
         }
+        onoffcheck = onoff;
         Toast.makeText(getApplicationContext(), "NÅ starte jeg", Toast.LENGTH_SHORT).show();
     }
 
     public void onRestart(){
         super.onRestart();
+        SharedPreferences prefavpa = PreferenceManager.getDefaultSharedPreferences(this);
+        onoff = prefavpa.getBoolean("smsonoff",true);
+        ComponentName receiver = new ComponentName(this, SMSBroadcastReceiver.class);
+        PackageManager pm = this.getPackageManager();
+        if(onoff != onoffcheck){
+            if(onoff){
+                pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+                Toast.makeText(this, "Broadcastreceiver på", Toast.LENGTH_SHORT).show();
+            }else{
+                pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                Toast.makeText(this, "Broadcastreceiver av", Toast.LENGTH_SHORT).show();
+            }
+            if(onoff) {
+                Intent intent = new Intent();
+                intent.setAction("com.example.serviceeksempel.mittbroadcast");
+                sendBroadcast(intent);
+            }
+            onoffcheck = onoff;
+        }
     }
 
     public void visVenner(View v){
