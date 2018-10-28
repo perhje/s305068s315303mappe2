@@ -4,6 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LEGG TIL RESTAURANT"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:layout_marginBottom="2dp"
+        android:paddingHorizontal="80dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
