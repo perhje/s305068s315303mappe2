@@ -49,9 +49,7 @@
             android:parentActivityName=".MainActivity">
 
         </activity>
-        <activity android:name=".NotifikasjonAktivitet">
 
-        </activity>
         <service android:name=".Periodisk">
 
         </service>

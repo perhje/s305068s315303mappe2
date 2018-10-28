@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
                     Manifest.permission.SEND_SMS,Manifest.permission.READ_PHONE_STATE
             }, 0);
         }
-       //String onoff;
+        //String onoff;
         SharedPreferences prefavpa = PreferenceManager.getDefaultSharedPreferences(this);
         onoff = prefavpa.getBoolean("smsonoff",true);
         ComponentName receiver = new ComponentName(this, SMSBroadcastReceiver.class);
