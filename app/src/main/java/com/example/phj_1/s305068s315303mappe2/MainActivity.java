@@ -51,7 +51,6 @@ public class MainActivity extends Activity {
             sendBroadcast(intent);
         }
         onoffcheck = onoff;
-        Toast.makeText(getApplicationContext(), "NÅ starte jeg", Toast.LENGTH_SHORT).show();
     }
 
     public void onRestart(){
